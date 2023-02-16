@@ -33,12 +33,12 @@ Use this script (Query_TruBudget_Bearer_Token.txt) to generate a dynamic token -
 let
 url = "<.API URL.>",
 headers = [#"Content-Type" = "application/json"],
-postData = Json.Document("{""apiVersion"":""1.0"",""data"":{""user"":{""id"":""<.Username.>"",""password"":""<.Password.>""}}}"),
+postData = "{""apiVersion"":""1.0"",""data"":{""user"":{""id"":""<.Username.>"",""password"":""<.Password.>""}}}",
 response = Web.Contents(
 url,
 [
 Headers = headers,
-Content = Text.ToBinary("{""apiVersion"":""1.0"",""data"":{""user"":{""id"":""<.Username.>"",""password"":""<.Password.>""}}}")
+Content = Text.ToBinary(postData)
 ]
 ),
 res = Json.Document(response),
